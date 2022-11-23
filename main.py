@@ -60,7 +60,7 @@ def modificarCandidato(id):
     return jsonify(json)
 
 @app.route("/candidatos/<string:id>",methods=['DELETE'])
-def eliminarCandidato(cedula):
+def eliminarCandidato(id):
     json=miControladorCandidato.delete(id)
     return jsonify(json)
 
@@ -174,6 +174,27 @@ def asignarPartidoACandidato(id, id_partido):
     json = miControladorCandidato.asignarPartido(id, id_partido)
     return jsonify(json)
 
+
+    #busqueda resultados por candidato
+
+@app.route("/resultados/candidatos/<string:id_candidato>", methods=['GET'])
+def resultadosCandidatos(id_candidato):
+    json=miControladorResultado.resultadosCandidatos(id_candidato)
+    return jsonify(json)
+
+    #busqueda de mayor votacion por mesa
+
+@app.route("/resultados/votaciones_mayores", methods=['GET'])
+def getVotacionMayor():
+    json = miControladorResultado.votacionMasAltaPorMesa()
+    return jsonify(json)
+
+    #Busqueda de suma de votos por candidato
+
+@app.route("/resultados/suma_votos/candidatos/<string:id_candidato>", methods = ['GET'])
+def getSumaVotosCandidato(id_candidato):
+        json = miControladorResultado.sumaVotosCandidato(id_candidato)
+        return jsonify(json)
 
     # Config
 

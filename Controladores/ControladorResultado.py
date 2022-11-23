@@ -44,6 +44,25 @@ class ControladorResultado():
     def delete(self, id):
         return self.repositorioResultado.delete(id)
 
+    #QUERY
+
+    #obtener resultados
+    def resultadosCandidatos(self, id_candidato):
+        return self.repositorioResultado.getResultadosCandidatos(id_candidato)
+
+    #Obtener votacion mas altas por Mesa
+
+    def votacionMasAltaPorMesa(self):
+        return self.repositorioResultado.getMayorVotacionPorMesa()
+
+    #Obtener suma de votos
+
+    def sumaVotosCandidato(self,id_candidato):
+        return self.repositorioResultado.sumaVotosCandidato(id_candidato)
+
+
+
+
 '''
 class ControladorResultado():
     def __init__(self):
